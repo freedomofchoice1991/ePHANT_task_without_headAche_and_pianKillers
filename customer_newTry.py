@@ -4,6 +4,7 @@
 from cmath import sin
 import random
 from genRandCusName_newTry import generateName 
+from genRandCusName_newTry import genRandNameForFamily
 
 
 class Customer:
@@ -20,12 +21,21 @@ class Customer:
     ##-> A function that gets an argument and decrease 2 from it
     def pairComeToRestaurant(y):
         return y -2
+    
+    ##-> A function that gets 2 arguments [restaurant seats and random number of family members] and decrease the second arg from the first one
+    def familyComeToRestaurant(y,x):
+        return y - x
+    
     ##-> assuming each person pays 10 euro for food
     def singleCustomerPayForFood(x):
         return x + 10
     ##-> assuming each person pays 10 euro for food
     def pairCustomerPayForFood(x):
         return x + 20    
+    
+    ##-> assuming that family customer pay 100 euro each time comes to restaurant (for simplicity)
+    def familyCustomerPayForFood(x):
+        return x + 100
 
     ##-> A function that gets an argument and adds one to it
     def singleExitFromRestauant(y):
@@ -58,4 +68,12 @@ for customerInstance in range(1,2001):
         singleCustomerPool.append(x)   
 
 
+##############STAGE 2#############
+## Add one additional customer for Family. Family has 3-6 persons inside it.
+
+##-> it was not defined so I allocated 500 euro for money
+familyInstance = genRandNameForFamily()
+fam = Customer(familyInstance, 500, list)
+
+## 
 
