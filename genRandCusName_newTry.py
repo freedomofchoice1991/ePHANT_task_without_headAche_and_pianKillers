@@ -32,3 +32,15 @@ def generateName ():
         name2 = randName()
         return (name1,name2)
 
+    
+####### STAGE 2
+##-> Using the randName() to generate random names for family customer
+def genRandNameForFamily ():
+    numberOfFamilyMembers = random.randint(6,9)
+    listOfNames = []
+    for i in range (3,numberOfFamilyMembers):
+        listOfNames.append(randName())
+    return listOfNames    
+    
+    
+    
