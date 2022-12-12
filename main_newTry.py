@@ -17,6 +17,8 @@ def main():
         ##-> pre-defined chances for each type of customer
         chanceSingleCustomer = 0.01
         chancePairCustomer = 0.02
+        ##-> pre-defined chances for Family customer type (STAGE 2)
+        chanceFamilyCustomer = 0.005
         ##-> Counter for days of a month [30 day months are assumed]
         numberOfDays = 1
         ##-> saving the result of final busy seats for every day in one month
@@ -67,7 +69,21 @@ def main():
                         ##-> calling the funtion <pairCustomerPayForFood> and restaurant balance as argument to it 
                         ##-> assuming each person pays 10 euro, it returns the restaurant balance + 20                        
                         today_restaurant_balance += Customer.pairCustomerPayForFood(Restaurant.restaurantBalance)
-
+                ####--------Stage 2 Family Customer probability----------
+                ### Probability that family will come in a specific hour is 0.005.
+                
+                ##-> random.random()  returns a random floating point number in the range [0.0, 1.0)
+                ##-> if the floating random number was less than or equal pre-defined chance given by the challenge
+                ##-> then we assume that family-customer came to the restaurant at that specific hour
+                ##-> and decrease the number of family member from restaurant seats
+                ##-> adds 100 euro to restaurant balance  <familyCustomerPayForFood>
+                if (random.random() <= chanceFamilyCustomer):
+                  Restaurant.NumberOfSeats = Customer.familyComeToRestaurant(Restaurant.NumberOfSeats, len(familyInstance))
+                  today_restaurant_balance += Customer.familyCustomerPayForFood()
+                  
+                  
+                  ####-----------------          
+                        
                 ##-> calculating number of busy seats by adding the counter of single and pair customers
                 ##-> needles to say that pair customers occupy 2 seats
                 today_busy_seats += (singleCustomerCounter + (pairCustomerCounter * 2))
