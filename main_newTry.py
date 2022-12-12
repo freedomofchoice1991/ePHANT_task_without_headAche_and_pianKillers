@@ -79,7 +79,7 @@ def main():
                 ##-> adds 100 euro to restaurant balance  <familyCustomerPayForFood>
                 if (random.random() <= chanceFamilyCustomer):
                   Restaurant.NumberOfSeats = Customer.familyComeToRestaurant(Restaurant.NumberOfSeats, len(familyInstance))
-                  today_restaurant_balance += Customer.familyCustomerPayForFood()
+                  today_restaurant_balance += Customer.familyCustomerPayForFood(Restaurant.restaurantBalance)
                   
                   
                   ####-----------------          
